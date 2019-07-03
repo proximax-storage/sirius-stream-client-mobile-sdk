@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Button
+        android:id="@+id/btn_channel_chat_create_channel"
+        android:layout_width="152dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Create Channel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_channel_chat_channel_userid" />
+
+    <Button
+        android:id="@+id/btn_channel_chat_send_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Send"
+        app:layout_constraintStart_toEndOf="@+id/edit_channel_chat_send_msg"
+        app:layout_constraintTop_toBottomOf="@+id/channel_chat_divider4" />
+
+    <Button
+        android:id="@+id/btn_channel_chat_accept_channel"
+        android:layout_width="155dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Accept Channel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/channel_chat_divider3" />
+
+    <Button
+        android:id="@+id/btn_channel_chat_deny_channel"
+        android:layout_width="155dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Deny Channel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_channel_chat_accept_channel" />
+
+    <EditText
+        android:id="@+id/edit_channel_chat_channel_userid"
+        android:layout_width="222dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Enter UserId"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_channel_chat_send_msg"
+        android:layout_width="122dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Send Message"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/channel_chat_divider4" />
+
+    <ToggleButton
+        android:id="@+id/toggle_channel_chat_channel_security"
+        android:layout_width="110dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textOff="Unsecure"
+        android:textOn="Secure"
+        app:layout_constraintStart_toEndOf="@+id/btn_channel_chat_create_channel"
+        app:layout_constraintTop_toBottomOf="@+id/edit_channel_chat_channel_userid" />
+
+    <ToggleButton
+        android:id="@+id/toggle_channel_chat_accept_channel_security"
+        android:layout_width="110dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textOff="Unsecure"
+        android:textOn="Secure"
+        app:layout_constraintStart_toEndOf="@+id/btn_channel_chat_accept_channel"
+        app:layout_constraintTop_toBottomOf="@+id/channel_chat_divider3" />
+
+    <View
+        android:id="@+id/channel_chat_divider3"
+        android:layout_width="395dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#2261A4"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_channel_chat_user_lookup" />
+
+    <View
+        android:id="@+id/channel_chat_divider4"
+        android:layout_width="395dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#2261A4"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_channel_chat_deny_channel" />
+
+    <View
+        android:id="@+id/channel_chat_divider2"
+        android:layout_width="395dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#2261A4"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_channel_chat_send_msg" />
+
+    <Button
+        android:id="@+id/btn_channel_chat_channel_close"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Close"
+        app:layout_constraintStart_toEndOf="@+id/btn_channel_chat_user_lookup"
+        app:layout_constraintTop_toBottomOf="@+id/toggle_channel_chat_channel_security" />
+
+    <Button
+        android:id="@+id/btn_channel_chat_user_lookup"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Lookup Presence"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_channel_chat_create_channel" />
+
+    <Button
+        android:id="@+id/btn_channel_chat_send_msg_raw"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="As Raw"
+        app:layout_constraintStart_toEndOf="@+id/btn_channel_chat_send_msg"
+        app:layout_constraintTop_toBottomOf="@+id/channel_chat_divider4" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="395dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#2261A4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_channel_chat_deny_stream" />
+
+    <Button
+        android:id="@+id/btn_channel_chat_share_stream"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Share Stream"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggle_channel_enable_cam" />
+
+    <Button
+        android:id="@+id/btn_channel_chat_confirm_stream"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Confirm"
+        app:layout_constraintStart_toEndOf="@+id/btn_channel_chat_share_stream"
+        app:layout_constraintTop_toBottomOf="@+id/toggle_channel_enable_cam" />
+
+    <Button
+        android:id="@+id/btn_channel_chat_deny_stream"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Deny"
+        app:layout_constraintStart_toEndOf="@+id/btn_channel_chat_confirm_stream"
+        app:layout_constraintTop_toBottomOf="@+id/toggle_channel_enable_cam" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_vert_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <FrameLayout
+        android:id="@+id/frm_channel_chat_broadcaster"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guide_vert_center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider3">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frm_channel_chat_viewer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/guide_vert_center"
+        app:layout_constraintTop_toBottomOf="@+id/divider3"
+        app:layout_constraintVertical_bias="1.0">
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btn_channel_chat_stop_stream"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Stop"
+        app:layout_constraintEnd_toEndOf="@+id/frm_channel_chat_broadcaster"
+        app:layout_constraintTop_toTopOf="@+id/frm_channel_chat_broadcaster" />
+
+    <Button
+        android:id="@+id/btn_channel_chat_stop_viewer"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Stop"
+        app:layout_constraintEnd_toEndOf="@+id/frm_channel_chat_viewer"
+        app:layout_constraintTop_toTopOf="@+id/frm_channel_chat_viewer" />
+
+    <ToggleButton
+        android:id="@+id/toggle_channel_enable_cam"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:checked="true"
+        android:text="Cam"
+        android:textOff="CAM"
+        android:textOn="CAM"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/channel_chat_divider2" />
+
+    <ToggleButton
+        android:id="@+id/toggle_channel_enable_mic"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:checked="true"
+        android:text="Mic"
+        android:textOff="MIC"
+        android:textOn="MIC"
+        app:layout_constraintStart_toEndOf="@+id/toggle_channel_enable_cam"
+        app:layout_constraintTop_toBottomOf="@+id/channel_chat_divider2" />
+
+    <Button
+        android:id="@+id/btn_channel_chat_init_streamer"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Init"
+        app:layout_constraintStart_toEndOf="@+id/toggle_channel_enable_mic"
+        app:layout_constraintTop_toBottomOf="@+id/channel_chat_divider2" />
+
+    <ImageButton
+        android:id="@+id/btn_channel_cycle_cam"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/btn_channel_chat_init_streamer"
+        app:layout_constraintTop_toBottomOf="@+id/channel_chat_divider2"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

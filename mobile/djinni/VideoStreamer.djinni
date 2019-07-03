@@ -1,0 +1,94 @@
+
+VideoFrameOrientation = enum {
+	rotate0;
+	rotate90;
+	rotate180;
+	rotate270;
+}
+
+VideoStreamErrorId = enum {
+    success;
+    connectionFailure;
+    partnerDenied;
+    partnerRejected;
+    notCurrentlyStreaming;
+    invalidShare;
+    invalidRequest;
+    channelNotConfirmed;
+    streamNotShared;
+}
+
+
+VideoStreamOptions = record {
+	audioCaptureEnabled: bool;
+	initialSpeakerVolume: i32;
+	initialMicVolume: i32;
+	videoCaptureEnabled: bool;
+	streamingWidth: i32;
+	streamingHeight: i32;
+	orientation: VideoFrameOrientation;
+}
+
+
+VideoStreamCapability = record {
+    width: i32;
+    height: i32;
+    maxFPS: i32;
+    isInterlaced: bool;
+}
+
+
+VideoStreamDevice = record {
+    name: string;
+    identifier: string;
+    videoCapabilities: list<VideoStreamCapability>;
+}
+
+
+VideoStreamRequestHandler = interface +j +o {
+	onVideoStreamStarted(streamId: string);
+	onVideoStreamError(errorId: VideoStreamErrorId);
+}
+
+VideoStreamBroadcastRetrieverHandler = interface +j +o {
+	onRetrieveBroadcastStreamId(streamId: optional<string>);
+}
+
+VideoStreamerObserver = interface +j +o {
+	onVideoStreamDisplayFrameReceived(streamId: string, buffer: binary, width: i32, height: i32, orientation: VideoFrameOrientation);
+	onVideoStreamDestroyed(streamId: string);
+}
+
+
+VideoStreamer = interface +c {
+	initialize(options: VideoStreamOptions, observer: optional<VideoStreamerObserver>);
+
+	startStreaming(handler: VideoStreamRequestHandler);
+	stopStreaming();
+
+	startViewing(streamId: string, handler: VideoStreamRequestHandler);
+	stopViewing(streamId: string);
+
+	enableAudioCapture(isEnabled: bool);
+	enableVideoCapture(isEnabled: bool);
+
+	setMicrophoneVolume(val: i32);
+	setSpeakerVolume(val: i32);
+
+	setAudioInputDevice(index: i32);
+	setAudioOutputDevice(index: i32);
+	setVideoDevice(index: i32);
+	setVideoCapability(index: i32);
+
+    selectedAudioInputDevice(): i32;
+	selectedAudioOutputDevice(): i32;
+	selectedVideoDevice(): i32;
+	selectedVideoCapability(): i32;
+
+	getAudioInputDevices(): list<string>;
+	getAudioOutputDevices(): list<string>;
+	getVideoDevices(): list<VideoStreamDevice>;
+	getVideoCapabilities(index: i32): list<VideoStreamCapability>;
+
+	retrieveBroadcastStreamId(handler: VideoStreamBroadcastRetrieverHandler);
+}

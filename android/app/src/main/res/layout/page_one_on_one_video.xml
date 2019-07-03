@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/frm_one_on_one_broadcaster"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_one_on_one_center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_one_on_one_stop_broadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Stop Broadcast"
+        app:layout_constraintEnd_toEndOf="@+id/frm_one_on_one_broadcaster"
+        app:layout_constraintTop_toBottomOf="@+id/btn_one_on_one_broadcast" />
+
+    <Button
+        android:id="@+id/btn_one_on_one_toggle_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Video"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_one_on_one_center"
+        app:layout_constraintStart_toStartOf="@+id/frm_one_on_one_broadcaster" />
+
+    <Button
+        android:id="@+id/btn_one_on_one_toggle_audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Audio"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_one_on_one_center"
+        app:layout_constraintStart_toEndOf="@+id/btn_one_on_one_toggle_video" />
+
+    <FrameLayout
+        android:id="@+id/frm_one_on_one_viewer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_one_on_one_view" />
+
+    <Button
+        android:id="@+id/btn_one_on_one_stop_viewer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Stop Viewer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/frm_one_on_one_viewer" />
+
+    <EditText
+        android:id="@+id/edit_one_on_one_stream_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Enter StreamID"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/btn_one_on_one_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frm_one_on_one_broadcaster" />
+
+    <Button
+        android:id="@+id/btn_one_on_one_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="View"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_one_on_one_center" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_one_on_one_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <Button
+        android:id="@+id/btn_one_on_one_broadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Start Broadcast"
+        app:layout_constraintEnd_toEndOf="@+id/frm_one_on_one_broadcaster"
+        app:layout_constraintTop_toTopOf="@+id/frm_one_on_one_broadcaster" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

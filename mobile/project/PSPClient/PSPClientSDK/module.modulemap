@@ -1,0 +1,6 @@
+module PSPClientSDK {
+  umbrella "Headers"
+  header "PSPClientSDK.h"
+
+  export *
+}

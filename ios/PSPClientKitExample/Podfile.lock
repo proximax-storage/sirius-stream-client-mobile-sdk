@@ -1,0 +1,21 @@
+PODS:
+  - PSPClientKit (0.2)
+
+DEPENDENCIES:
+  - PSPClientKit (from `https://github.com/peerstreaminc/client-sdk-ios.git`)
+
+EXTERNAL SOURCES:
+  PSPClientKit:
+    :git: https://github.com/peerstreaminc/client-sdk-ios.git
+
+CHECKOUT OPTIONS:
+  PSPClientKit:
+    :commit: 179206b01915549a775c87ff3f70ee1937ce69fe
+    :git: https://github.com/peerstreaminc/client-sdk-ios.git
+
+SPEC CHECKSUMS:
+  PSPClientKit: 531e58c9eeb6b32710626ee53951261a5a51b920
+
+PODFILE CHECKSUM: 97f1669b55691484fb95c48d6e1e0c0a46b3e15f
+
+COCOAPODS: 1.5.3

@@ -1,0 +1,10 @@
+project/PSPClient/PSPClient.xcodeproj/xcuserdata/bastek.xcuserdatad
+project/PSPClient/PSPClient.xcodeproj/project.xcworkspace
+project/PSPClient/PSPClient.xcodeproj/xcshareddata
+project/PSPClient/PSPClient.xcodeproj/xcuserdata
+project/PSPClient/PSPClientTest/Frameworks
+project/PSPClient/PSPClientTestMacOS/Frameworks
+libs
+
+.DS_Store
+

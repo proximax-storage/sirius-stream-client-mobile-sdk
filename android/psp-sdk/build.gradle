@@ -1,0 +1,122 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            ndk {
+                abiFilters "armeabi-v7a"
+            }
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-rules.pro'
+            ndk {
+                abiFilters "armeabi-v7a"
+            }
+        }
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDirs = [
+                        "bridge/generated/java",
+                        "src/main/java"
+                ]
+                exclude '**/UpdatedBeanSerializer.java'
+            }
+            jni {
+                srcDirs = []
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    //api group: 'org.whispersystems', name: 'webrtc-android', version: 'M64'
+    // implementation 'org.webrtc:google-webrtc:1.0.27771'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+// ------------------------------------
+// ------------ Publishing ------------
+// ------------------------------------
+
+def deploy_libraryVersion = '0.2.2'
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            groupId rootProject.ext.deploy_packageName
+            version = deploy_libraryVersion
+            artifactId project.getName()
+
+            // Tell maven to prepare the generated "*.aar" file for publishing
+            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
+
+            pom.withXml {
+                def dependencies = asNode().appendNode('dependencies')
+                configurations.api.getDependencies().each { configDep ->
+                    if (configDep.group != null && configDep.group.length() > 0 && configDep.name != null && configDep.name.length() > 0) {
+                        def dependency = dependencies.appendNode('dependency')
+                        println "Adding artifact dependency: ${configDep}"
+                        dependency.appendNode('groupId', configDep.group)
+                        dependency.appendNode('artifactId', configDep.name)
+                        dependency.appendNode('version', configDep.version)
+                    }
+                }
+            }
+        }
+    }
+}
+
+artifactory {
+    contextUrl = rootProject.ext.deploy_repo_url
+    publish {
+        repository {
+            // The Artifactory repository key to publish to
+            repoKey = rootProject.ext.deploy_repo_id
+
+            username = rootProject.ext.deploy_repo_user
+            password = rootProject.ext.deploy_repo_pw
+        }
+        defaults {
+            // Tell the Artifactory Plugin which artifacts should be published to Artifactory.
+            publications('aar')
+            publishArtifacts = true
+
+            // Properties to be attached to the published artifacts.
+            // properties = ['qa.level': 'basic', 'dev.team': 'core']
+            // Publish generated POM files to Artifactory (true by default)
+            publishPom = true
+        }
+    }
+}

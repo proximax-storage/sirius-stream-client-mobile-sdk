@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_user_setup"
+            android:icon="@drawable/ic_menu_identity"
+            android:title="@string/nav_page_user_setup"
+            app:contentDescription="@string/nav_page_user_setup_desc"/>
+        <item
+            android:id="@+id/nav_channel_chat"
+            android:icon="@drawable/ic_menu_chat"
+            android:title="@string/nav_page_channel_chat"
+            app:contentDescription="@string/nav_page_channel_chat_desc" />/>
+        <item
+            android:id="@+id/nav_one_on_one_video"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/nav_page_one_on_one_video"
+            app:contentDescription="@string/nav_page_one_on_one_video_desc"/>
+    </group>
+
+<!--    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>-->
+
+</menu>

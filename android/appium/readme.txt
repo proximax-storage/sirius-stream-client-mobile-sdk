@@ -1,0 +1,1 @@
+This is an Appium test that runs at AWS device farm, testing Android PSP test Android "app"

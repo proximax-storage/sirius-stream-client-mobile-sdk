@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PSP Android SDK</string>
+    <string name="title_activity_drawer_base">PSP Test App</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">PSP Test App</string>
+    <string name="nav_header_subtitle">Select a page below</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <!-- Page Navigation -->
+    <string name="nav_page_user_setup">User Setup</string>
+    <string name="nav_page_user_setup_desc">Menu User Setup</string>
+    <string name="nav_page_channel_chat">Channel Chat</string>
+    <string name="nav_page_channel_chat_desc">Menu Channel Chat</string>
+    <string name="nav_page_one_on_one_video">One on One Video</string>
+    <string name="nav_page_one_on_one_video_desc">Menu One on One Video</string>
+</resources>

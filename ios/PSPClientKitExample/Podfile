@@ -1,0 +1,15 @@
+platform :ios, '11.0'
+
+# to suppress same name C++ files but from different namespace
+# for local PATH only, git doesn't have this issue
+install! 'cocoapods', :deterministic_uuids => false
+
+
+target 'PSPClientKitExample' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  pod 'PSPClientKit', :git => 'https://github.com/peerstreaminc/client-sdk-ios.git'
+#  pod 'PSPClientKit', :path => '..'
+
+end

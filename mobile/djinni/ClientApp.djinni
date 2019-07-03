@@ -1,0 +1,124 @@
+@import "Channel.djinni"
+@import "VideoStreamer.djinni"
+
+
+ClientBootstrapNode = record {
+    mode: string;
+    handshakeKey: string;
+    fingerprint: string;
+    identity: string;
+    address: string;
+}
+
+ClientAppConfig = record {
+    nameSpace: string;
+    subNameSpace: string;
+    node: ClientBootstrapNode;
+}
+
+ClientLogLevel = enum {
+    logTrace;
+    logDebug;
+    logInfo;
+    logWarning;
+    logError;
+    logFatal;
+}
+
+ClientKeyPair = record {
+	publicKey: string;
+	privateKey: string;
+}
+
+ClientRegistrationData = record {
+	identity: string;
+	secretKey: string;
+	certificate: binary;
+} deriving(parcelable)
+
+ClientAppExitCode = enum {
+    success;
+    fatal;
+    networkError;
+    discoveryFailure;
+    presenceFailure;
+    channelFailure;
+    registrationFailure;
+    loginFailure;
+}
+
+ClientRegisterFailureCode = enum {
+	success;
+    connectionError;
+    certFormatError;
+    certUnsupportedVersion;
+    certSignatureInvalid;
+    certInternalError;
+}
+
+ClientLoginFailureCode = enum {
+    success;
+    connectionError;
+    notRegistered;
+    certificateInvalid;
+}
+
+ClientNetworkStatus = record {
+    networkConnectivity: f32;
+    numEntryNodesConnected: i64;
+}
+
+ClientChannelSecurity = enum {
+    secure;
+    insecure;
+}
+
+
+ClientRegisterHandler = interface +j +o {
+	onRegisterSuccess(clientId: string, userData: ClientRegistrationData);
+	onRegisterFailure(clientId: string, code: ClientRegisterFailureCode);
+}
+
+
+ClientLoginHandler = interface +j +o {
+	onLoginSuccess(clientId: string, response: string, data: optional<ClientRegistrationData>);
+    onLoginFailure(clientId: string, code: ClientLoginFailureCode);
+}
+
+
+ClientChannelHandler = interface +j +o {
+	onChannelConfirmed(clientId: string, channel: Channel);
+	onChannelResponseError(clientId: string, errorId: ChannelRequestErrorId);
+}
+
+
+ClientAppObserver = interface +j +o {
+	onApplicationReady(clientId: string);
+    onApplicationExit(code: ClientAppExitCode);
+	onChannelRequested(clientId: string, userId: string);
+    onNetworkStatus(clientId: string, status: ClientNetworkStatus);
+    onUserPresenceChange(clientId: string, userId: string, isActive: bool);
+}
+
+
+ClientApp = interface +c {
+	static create(config: ClientAppConfig, observer: ClientAppObserver): ClientApp;
+
+	start();
+	stop();
+
+	setMinLogLevel(level: ClientLogLevel);
+
+	registerUser(handler: ClientRegisterHandler);
+	login(userData: ClientRegistrationData, handler: ClientLoginHandler);
+
+	getIdentity(): string;
+	getVideoStreamer(): VideoStreamer;
+
+	createChannel(userId: string, security: ClientChannelSecurity, handler: ClientChannelHandler);
+	confirmChannel(userId: string, security: ClientChannelSecurity, handler: ClientChannelHandler);
+	denyChannel(userId: string);
+
+	registerUserPresenceChange(userId: string);
+    unregisterUserPresenceChange(userId: string);
+}

@@ -1,0 +1,6 @@
+[submodule "deps/djinni"]
+	path = deps/djinni
+	url = git@github.com:dropbox/djinni.git 
+[submodule "deps/middleware"]
+	path = deps/middleware
+	url = git@github.com:peerstreaminc/middleware.git 

@@ -1,0 +1,57 @@
+
+ChannelRequestErrorId = enum {
+    success;
+    channelDenied;
+    channelTimeout;
+    userNotFound;
+    connectionFailure;
+    failure;
+    channelAlreadyExists;
+    invalidConfirm;
+}
+
+ChannelErrorId = enum {
+    userDisconnected;
+    channelTimeout;
+    connectionFailure;
+    rateLimitExceeded;
+    channelClosed;
+    channelNotConfirmed;
+    invalidConfirm;
+    invalidDeny;
+}
+
+
+ChannelStreamHandler = interface +j +o {
+    onStreamCreated(channelId: string, streamId: string);
+    onStreamError(channelId: string, errorId: VideoStreamErrorId);
+}
+
+ChannelObserver = interface +j +o {
+    onStreamRequested(channelId: string);
+    onStreamShared(channelId: string, streamId: string);
+
+    onRawReceived(channelId: string, data: binary);
+	onMessageReceived(channelId: string, msg: string);
+    onChannelError(channelId: string, errorId: ChannelErrorId);
+}
+
+
+Channel = interface +c {
+	setObserver(observer: optional<ChannelObserver>);
+
+    sendRawData(data: binary);
+    sendMessage(msg: string);
+	close();
+
+    shareStream(handler: ChannelStreamHandler);
+    requestStream(handler: ChannelStreamHandler);
+    confirmVideoStreamRequest(handler: ChannelStreamHandler);
+    denyVideoStreamRequest();
+    confirmVideoStreamShare(handler: ChannelStreamHandler);
+    denyVideoStreamShare();
+    stopViewingStream();
+    isConfirmed(): bool;
+
+    getIdentity(): string;
+}
