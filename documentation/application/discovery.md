@@ -10,7 +10,7 @@ See [Application level messages](discoverypull.md) for a full list of events.
 
 ## Pages
 
-- [Discovery - Client](discovery/client.md)
+- [Discovery - Client](../discovery/client.md)
 - [Discovery - Raft Implementation](discovery/discoveryraft.md)
 - [Discovery - Signature Consensus](discovery/multisignatureconsensus.md)
 - [Discovery - Recovery](discovery/recovery.md)
