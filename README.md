@@ -1,7 +1,6 @@
-# sirius-stream-docs-sdk
-DEPRECATED - directories are divided into separate Github repos.
+# sirius-stream-client-mobile-sdk
 
-- https://github.com/proximax-storage/sirius-stream-mobile
-- https://github.com/proximax-storage/sirius-stream-client-sdk-android
-- https://github.com/proximax-storage/sirius-stream-client-sdk-ios
-- https://github.com/proximax-storage/sirius-stream-docs
+## Directories
+- *mobile* - Sirius Stream client SDK wrapper
+- *ios* - iOS client SDK
+- *android* - Android client SDK
